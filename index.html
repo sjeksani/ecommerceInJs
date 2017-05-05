@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SJ</title>
+    <script src="sample.json"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>SJ Store</h1>
+        </div>
+        <div id="tab">
+        </div>
+    </div>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+    function emptyDiv() {
+        document.getElementById("tab").innerHTML = "";
+    };
+
+    function breaking() {
+        var br = document.createElement("br");
+        document.getElementById("tab").appendChild(br);
+    }
+
+    function drawDiv(a) {
+        for (var i = 0; i < a.products.length; i++) {
+
+
+            var image1 = document.createElement("img");
+            image1.style = "height: 200px;width: 300px;"
+
+            image1.src = a.products[i].image;
+            var h = document.createElement("h1");
+            var name = document.createTextNode(a.products[i].name);
+            h.appendChild(name);
+            var pr = document.createTextNode(a.products[i].price);
+            breaking();
+
+            var tabdiv = document.getElementById("tab");
+            tabdiv.style = "text-align : center"
+            document.getElementById("tab").appendChild(image1);
+            breaking();
+
+            document.getElementById("tab").appendChild(name);
+            breaking();
+
+            document.getElementById("tab").appendChild(pr);
+
+
+
+        }
+    }
+    </script>
+</body>
+<script>
+drawDiv(data);
+
+drawDiv(data);
+drawDiv(data);
+drawDiv(data);
+</script>
+
+</html>
