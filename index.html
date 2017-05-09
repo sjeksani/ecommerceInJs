@@ -4,15 +4,18 @@
 <head>
     <title>SJ</title>
     <script src="sample.json"></script>
+    <script src="select.js"></script>
 </head>
 
 <body>
-    <div>
-        <div>
-            <h1>SJ Store</h1>
-        </div>
-        <div id="tab">
-        </div>
+    <div id="header">
+        <h1>American Eagle</h1>
+    </div>
+    <div id="buttons">
+        <input id="button1" type="button" name="sortBySize" onclick="sortBySize()" value="Sort By Size">
+        <input type="button" name="FilterByPrice" onclick="FilterByPrice()" value="Filter price (10 to 30)">
+    </div>
+    <div id="imageDiv">
     </div>
     <style type="text/css">
 
@@ -22,46 +25,118 @@
         document.getElementById("tab").innerHTML = "";
     };
 
-    function breaking() {
+    function breaking(divTag) {
         var br = document.createElement("br");
-        document.getElementById("tab").appendChild(br);
+        divTag.appendChild(br);
     }
 
     function drawDiv(a) {
-        for (var i = 0; i < a.products.length; i++) {
+
+
+        for (var i = 0; i < a.shirts.length; i++) {
+
+            var d = document.createElement("div");
+            d.setAttribute("class", "divs");
 
 
             var image1 = document.createElement("img");
-            image1.style = "height: 200px;width: 300px;"
+            image1.style = "height: 300px;width: 300px;"
 
-            image1.src = a.products[i].image;
-            var h = document.createElement("h1");
-            var name = document.createTextNode(a.products[i].name);
-            h.appendChild(name);
-            var pr = document.createTextNode(a.products[i].price);
-            breaking();
+            image1.src = a.shirts[i].image;
 
-            var tabdiv = document.getElementById("tab");
-            tabdiv.style = "text-align : center"
-            document.getElementById("tab").appendChild(image1);
-            breaking();
+            var name = document.createTextNode(a.shirts[i].name);
 
-            document.getElementById("tab").appendChild(name);
-            breaking();
+            var price = document.createTextNode(a.shirts[i].price);
 
-            document.getElementById("tab").appendChild(pr);
 
+            var color = document.createTextNode(a.shirts[i].color);
+
+
+            var size = document.createTextNode(a.shirts[i].size);
+
+            var br = document.createElement("br");
+            var br1 = document.createElement("br");
+
+            d.appendChild(image1);
+            breaking(d);
+            breaking(d);
+
+            // d.appendChild(name);
+            // breaking(d);
+
+
+            d.appendChild(price);
+            breaking(d);
+
+            d.appendChild(color);
+            breaking(d);
+
+
+            d.appendChild(size);
+
+
+
+            document.getElementById("imageDiv").appendChild(d);
 
 
         }
     }
+
+    function sortBySize() {
+        data.shirts.sort(function(lhs, rhs) {
+
+            if (lhs.size > rhs.size) {
+                return 1;
+            } else if (lhs.size < rhs.size) {
+                return -1;
+            } else {
+                return 0;
+            }
+
+        });
+        document.getElementById("imageDiv").innerHTML = " ";
+        drawDiv(data);
+    }
+
+    function FilterByPrice() {
+        console.log("hi");
+
+        data.shirts.filter(function(pr) {
+            if (pr.price > 10 && pr.price < 30) {
+                return pr.price;
+            };
+
+        });
+        document.getElementById("imageDiv").innerHTML = " ";
+        drawDiv(data);
+    }
     </script>
+    <style>
+    .divs {
+        text-align: center;
+        width: 300px;
+        float: left;
+        margin: 0px 40px 30px 40px;
+        padding: 10px;
+        padding-bottom: 20px;
+    }
+    
+    #header {
+        text-align: center;
+        background-color: teal;
+        color: white;
+        margin-top: 0px;
+        height: 100px;
+        padding-top: 40px;
+    }
+    
+    body {
+        margin: -21px;
+        padding: 0px;
+    }
+    </style>
 </body>
 <script>
-drawDiv(data);
-
-drawDiv(data);
-drawDiv(data);
 drawDiv(data);
 </script>
 
