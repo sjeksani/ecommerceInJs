@@ -1,7 +1,7 @@
 var data = {
     "shirts": [{
         "name": "Half sleeves",
-        "price": "$8.65",
+        "price": "$8.55",
         "color": "Yellow",
         "size": "M",
         "image": "http://img.diytrade.com/cdimg/1249795/13900236/0/1281684014/American_Eagle_Men_s_T-shirt.jpg"
